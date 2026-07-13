@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de ropa</title>
+  <meta name="description" content="">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <header id="site-header">
+    <div class="container">
+      <a href="#hero" class="brand-name" data-bind="brand.name">Tienda</a>
+      <div class="header-actions">
+        <button class="cart-toggle" id="cart-toggle" aria-label="Ver carrito">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú de navegación">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav id="site-nav">
+        <ul id="nav-links"></ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="hero">
+      <div class="hero-bg" id="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 data-bind="hero.headline">Titular</h1>
+        <p data-bind="hero.subheadline">Subtítulo</p>
+        <a class="btn btn-primary" id="hero-cta" href="#catalog" data-bind="hero.ctaText">Ver catálogo</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title" data-bind="about.title">Nuestra propuesta</h2>
+        <div class="about-grid">
+          <div class="about-image">
+            <img id="about-image" src="" alt="">
+          </div>
+          <div class="about-text" id="about-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog">
+      <div class="container">
+        <h2 class="section-title">Catálogo</h2>
+        <p class="section-subtitle">Agregá productos al carrito y finalizá tu pedido por WhatsApp.</p>
+        <div class="catalog-filters" id="catalog-filters"></div>
+        <div id="catalog-container"></div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <h2 class="section-title" data-bind="gallery.title">Galería</h2>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container">
+        <h2 class="section-title" data-bind="location.title">Ubicación y horarios</h2>
+        <div class="location-grid">
+          <iframe id="location-map" loading="lazy" title="Mapa de ubicación" src=""></iframe>
+          <div>
+            <p id="location-address"></p>
+            <ul class="hours-list" id="hours-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title" data-bind="contact.title">Contacto</h2>
+        <div class="contact-grid">
+          <div>
+            <h4>Teléfono</h4>
+            <a id="contact-phone" href=""></a>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <a id="contact-email" href=""></a>
+          </div>
+          <div>
+            <h4>Redes</h4>
+            <div class="social-links" id="social-links"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer">
+    <p id="footer-text"></p>
+  </footer>
+
+  <a id="whatsapp-float" class="whatsapp-float" href="#" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.017 2C6.5 2 2 6.477 2 12c0 1.876.523 3.62 1.432 5.113L2 22l5.036-1.375A9.94 9.94 0 0 0 12.017 22C17.535 22 22 17.523 22 12S17.535 2 12.017 2zm0 18.06a8.02 8.02 0 0 1-4.087-1.124l-.293-.174-3.02.825.81-2.94-.19-.302A8.02 8.02 0 1 1 12.017 20.06z"/>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    </svg>
+  </a>
+
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+    <div class="cart-drawer-header">
+      <h3>Tu carrito</h3>
+      <button class="cart-close" id="cart-close" aria-label="Cerrar carrito">&times;</button>
+    </div>
+    <div class="cart-drawer-body">
+      <p id="cart-empty" class="cart-empty">Todavía no agregaste productos.</p>
+      <div id="cart-items"></div>
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <span id="cart-total">$0</span>
+      </div>
+      <a class="btn btn-primary cart-checkout-btn" id="cart-checkout" href="#">Finalizar pedido por WhatsApp</a>
+      <button class="cart-clear-btn" id="cart-clear">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Imagen anterior">&#8249;</button>
+    <img id="lightbox-image" src="" alt="">
+    <button class="lightbox-next" id="lightbox-next" aria-label="Imagen siguiente">&#8250;</button>
+  </div>
+
+  <script src="data/config.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/render-catalog.js"></script>
+  <script src="js/render-cart.js"></script>
+  <script src="js/render-content.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/catalog-filter.js"></script>
+  <script src="js/gallery-lightbox.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+/* layout.css — estructura de secciones, grids y breakpoints. Mobile-first. */
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+section {
+  padding: var(--spacing-section-mobile) 0;
+}
+
+/* ---------- Header ---------- */
+
+#site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-header);
+}
+
+#site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+#site-header nav {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+#site-header nav.is-open {
+  max-height: 400px;
+}
+
+#site-header nav ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1.25rem 1rem;
+}
+
+#site-header nav a {
+  display: block;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ---------- Hero ---------- */
+
+#hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 68px;
+  color: #fff;
+}
+
+#hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+#hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 16, 12, 0.5), rgba(20, 16, 12, 0.75));
+}
+
+#hero .hero-content {
+  position: relative;
+  max-width: 640px;
+  padding: 0 1.25rem;
+}
+
+#hero .hero-content h1,
+#hero .hero-content p {
+  color: #fff;
+}
+
+/* ---------- About ---------- */
+
+#about .about-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+#about .about-image img {
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- Catálogo ---------- */
+
+.catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.catalog-category {
+  margin-bottom: 2.5rem;
+}
+
+.catalog-category h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* ---------- Gallery ---------- */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  cursor: pointer;
+}
+
+/* ---------- Location ---------- */
+
+#location .location-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+#location iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: var(--radius-card);
+}
+
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ---------- Contact ---------- */
+
+.contact-grid {
+  display: grid;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ---------- Footer ---------- */
+
+#site-footer {
+  padding: 2rem 0;
+  text-align: center;
+  background: var(--color-bg-alt);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ============================================================================
+   Breakpoints — desktop enhancements
+   ============================================================================ */
+
+@media (min-width: 768px) {
+  section {
+    padding: var(--spacing-section) 0;
+  }
+
+  #site-header nav {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    background: transparent;
+  }
+
+  #site-header nav ul {
+    flex-direction: row;
+    padding: 0;
+    gap: 1.75rem;
+  }
+
+  #site-header nav a {
+    border-bottom: none;
+    padding: 0;
+  }
+
+  #nav-toggle {
+    display: none;
+  }
+
+  #about .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #location .location-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(3, 1fr);
+    text-align: left;
+  }
+
+  .social-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .catalog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
