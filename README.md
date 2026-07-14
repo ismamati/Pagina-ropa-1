@@ -16,20 +16,27 @@ servidor, ni `npm install`, ni build.
 ## Estructura
 
 ```
-index.html          → estructura de secciones (no debería requerir cambios)
-css/theme.css        → colores y tipografía de marca (EDITAR por cliente)
-css/base.css         → reset y tipografía base (core)
-css/layout.css       → grids y breakpoints responsive (core)
-css/components.css   → botones, cards, carrito, nav, lightbox (core)
-data/config.js       → TODO el contenido del sitio (EDITAR por cliente)
-js/cart.js           → estado del carrito (localStorage) (core)
-js/render-cart.js    → drawer del carrito + mensaje de WhatsApp (core)
-js/render-catalog.js → tarjetas del catálogo (portada + nombre + precio) (core)
-js/product-modal.js  → ficha de producto en modal (galería, talles, agregar) (core)
-js/*.js              → resto de la lógica de render e interactividad (core)
-assets/images/       → fotos (REEMPLAZAR por cliente)
-assets/icons/        → favicon (REEMPLAZAR por cliente)
+index.html           → home: hero, nosotros, galería, ubicación, contacto (no debería requerir cambios)
+catalogo.html         → página del catálogo completo, con filtros por categoría (no debería requerir cambios)
+css/theme.css          → colores y tipografía de marca (EDITAR por cliente)
+css/base.css           → reset y tipografía base (core)
+css/layout.css         → grids y breakpoints responsive (core)
+css/components.css     → botones, cards, carrito, nav, modal, lightbox (core)
+data/config.js         → TODO el contenido del sitio (EDITAR por cliente)
+js/cart.js             → estado del carrito (localStorage) (core)
+js/render-cart.js      → drawer del carrito + mensaje de WhatsApp (core)
+js/render-catalog.js   → tarjetas del catálogo (portada + nombre + precio) (core)
+js/product-modal.js    → ficha de producto en modal (galería, talles, agregar) (core)
+js/*.js                → resto de la lógica de render e interactividad (core)
+assets/images/         → fotos (REEMPLAZAR por cliente)
+assets/icons/          → favicon (REEMPLAZAR por cliente)
 ```
+
+`index.html` y `catalogo.html` comparten el mismo header, footer, botón de
+WhatsApp, drawer de carrito y modal de producto — se ven y funcionan como
+un único sitio, solo que el catálogo vive en su propia página en vez de ser
+una sección más del scroll de la home. El carrito es el mismo en las dos
+páginas porque se guarda en `localStorage` (mismo origen).
 
 ## Cómo funciona el catálogo y el carrito
 
@@ -68,7 +75,7 @@ assets/icons/        → favicon (REEMPLAZAR por cliente)
 
 - Todo `js/*.js`
 - `css/base.css`, `css/layout.css`, `css/components.css`
-- La estructura de secciones de `index.html`
+- La estructura de secciones de `index.html` y `catalogo.html`
 
 ## Esquema de datos (`data/config.js`)
 
@@ -79,7 +86,14 @@ productos (`items`). Cada producto tiene `id`, `name`, `description`,
 `images` (array con la galería completa que se muestra en el modal —
 puede tener 1 sola imagen si todavía no hay más fotos del producto),
 `sizes` (array de talles, ej. `["S","M","L"]`) y `tags` opcionales
-(`nuevo`, `popular`, `oferta`, `último talle`).
+(`nuevo`, `oferta`, `último talle`). Los badges `nuevo` y `oferta` tienen
+color propio (rojo y verde respectivamente, en `components.css`); el resto
+de los tags usa el estilo neutro por defecto.
+
+El nav (`nav.links`) usa targets con la página incluida (ej.
+`"index.html#hero"`, `"catalogo.html"`): `render-content.js` resuelve en
+tiempo real si hay que hacer scroll suave (misma página) o navegar
+normalmente (otra página).
 
 ## Botón flotante de WhatsApp
 

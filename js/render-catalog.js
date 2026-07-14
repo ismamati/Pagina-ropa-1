@@ -7,7 +7,6 @@
 
 const PRODUCT_TAG_LABELS = {
   nuevo: "Nuevo",
-  popular: "Más pedido",
   oferta: "Oferta",
   "último talle": "Último talle"
 };
@@ -21,13 +20,18 @@ function formatPrice(price, formatting) {
   return `${formatting.currencySymbol}${amount}`;
 }
 
+// Usado tanto por la card como por el modal de producto, para que los
+// badges de tags (colores incluidos) se vean siempre igual.
+function buildTagsHtml(tags) {
+  return (Array.isArray(tags) ? tags : [])
+    .map(tag => `<span class="tag-badge" data-tag="${tag}">${PRODUCT_TAG_LABELS[tag] || tag}</span>`)
+    .join("");
+}
+
 function buildProductCard(item, config) {
   PRODUCT_INDEX[item.id] = item;
 
-  const tags = Array.isArray(item.tags) ? item.tags : [];
-  const tagsHtml = tags
-    .map(tag => `<span class="tag-badge">${PRODUCT_TAG_LABELS[tag] || tag}</span>`)
-    .join("");
+  const tagsHtml = buildTagsHtml(item.tags);
 
   const imageSrc = item.image || "";
 

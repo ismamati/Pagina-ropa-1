@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda de ropa</title>
+  <title>Catálogo — Tienda de ropa</title>
   <meta name="description" content="">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 
@@ -19,7 +19,7 @@
 
   <header id="site-header">
     <div class="container">
-      <a href="#hero" class="brand-name" data-bind="brand.name">Tienda</a>
+      <a href="index.html" class="brand-name" data-bind="brand.name">Tienda</a>
       <div class="header-actions">
         <button class="cart-toggle" id="cart-toggle" aria-label="Ver carrito">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -40,65 +40,12 @@
 
   <main>
 
-    <section id="hero">
-      <div class="hero-bg" id="hero-bg"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1 data-bind="hero.headline">Titular</h1>
-        <p data-bind="hero.subheadline">Subtítulo</p>
-        <a class="btn btn-primary" id="hero-cta" href="catalogo.html" data-bind="hero.ctaText">Ver catálogo</a>
-      </div>
-    </section>
-
-    <section id="about">
+    <section id="catalog">
       <div class="container">
-        <h2 class="section-title" data-bind="about.title">Nuestra propuesta</h2>
-        <div class="about-grid">
-          <div class="about-image">
-            <img id="about-image" src="" alt="">
-          </div>
-          <div class="about-text" id="about-body"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="gallery">
-      <div class="container">
-        <h2 class="section-title" data-bind="gallery.title">Galería</h2>
-        <div class="gallery-grid" id="gallery-grid"></div>
-      </div>
-    </section>
-
-    <section id="location">
-      <div class="container">
-        <h2 class="section-title" data-bind="location.title">Ubicación y horarios</h2>
-        <div class="location-grid">
-          <iframe id="location-map" loading="lazy" title="Mapa de ubicación" src=""></iframe>
-          <div>
-            <p id="location-address"></p>
-            <ul class="hours-list" id="hours-list"></ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title" data-bind="contact.title">Contacto</h2>
-        <div class="contact-grid">
-          <div>
-            <h4>Teléfono</h4>
-            <a id="contact-phone" href=""></a>
-          </div>
-          <div>
-            <h4>Email</h4>
-            <a id="contact-email" href=""></a>
-          </div>
-          <div>
-            <h4>Redes</h4>
-            <div class="social-links" id="social-links"></div>
-          </div>
-        </div>
+        <h2 class="section-title">Catálogo</h2>
+        <p class="section-subtitle">Agregá productos al carrito y finalizá tu pedido por WhatsApp.</p>
+        <div class="catalog-filters" id="catalog-filters"></div>
+        <div id="catalog-container"></div>
       </div>
     </section>
 
@@ -135,18 +82,34 @@
     </div>
   </aside>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
-    <button class="lightbox-prev" id="lightbox-prev" aria-label="Imagen anterior">&#8249;</button>
-    <img id="lightbox-image" src="" alt="">
-    <button class="lightbox-next" id="lightbox-next" aria-label="Imagen siguiente">&#8250;</button>
+  <div class="product-modal-overlay" id="product-modal-overlay"></div>
+  <div class="product-modal" id="product-modal" role="dialog" aria-modal="true" aria-label="Detalle de producto">
+    <button class="product-modal-close" id="product-modal-close" aria-label="Cerrar">&times;</button>
+    <div class="product-modal-grid">
+      <div class="product-modal-gallery">
+        <img id="product-modal-image" class="product-modal-main-image" src="" alt="">
+        <div class="product-modal-thumbs" id="product-modal-thumbs"></div>
+      </div>
+      <div class="product-modal-info">
+        <h3 id="product-modal-name"></h3>
+        <p class="product-modal-price" id="product-modal-price"></p>
+        <p class="product-modal-description" id="product-modal-description"></p>
+        <div class="product-modal-tags" id="product-modal-tags"></div>
+        <p class="product-modal-sizes-label">Talle</p>
+        <div class="product-modal-sizes" id="product-modal-sizes"></div>
+        <button class="btn btn-primary product-modal-add" id="product-modal-add" disabled>Agregar al carrito</button>
+      </div>
+    </div>
   </div>
 
   <script src="data/config.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/render-catalog.js"></script>
   <script src="js/render-cart.js"></script>
+  <script src="js/product-modal.js"></script>
   <script src="js/render-content.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/catalog-filter.js"></script>
   <script src="js/gallery-lightbox.js"></script>
   <script src="js/main.js"></script>
 </body>

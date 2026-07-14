@@ -16,7 +16,7 @@ function renderStaticContent(config) {
   const navLinks = document.getElementById("nav-links");
   if (navLinks) {
     navLinks.innerHTML = config.nav.links
-      .map(link => `<li><a href="${link.target}">${link.label}</a></li>`)
+      .map(link => `<li><a href="${resolveNavHref(link.target)}">${link.label}</a></li>`)
       .join("");
   }
 
@@ -107,4 +107,20 @@ function renderStaticContent(config) {
 function setText(selector, value) {
   const el = document.querySelector(selector);
   if (el) el.textContent = value;
+}
+
+// Los targets del nav vienen como "index.html#hero" o "catalogo.html".
+// Si apuntan a la página actual, se devuelve solo el "#hash" (así nav.js lo
+// intercepta y hace scroll suave); si apuntan a otra página, se devuelve
+// el target completo para que el navegador navegue normalmente.
+function resolveNavHref(target) {
+  const currentFile = location.pathname.split("/").pop() || "index.html";
+  const hashIndex = target.indexOf("#");
+  const targetFile = hashIndex === -1 ? target : target.slice(0, hashIndex);
+  const targetHash = hashIndex === -1 ? "" : target.slice(hashIndex);
+
+  if (targetFile === currentFile || targetFile === "") {
+    return targetHash || "#";
+  }
+  return target;
 }

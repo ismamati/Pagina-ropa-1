@@ -65,10 +65,7 @@ function openProductModal(product, config) {
   setModalMainImage(images[0], product.name);
   renderModalThumbnails(images, product.name);
 
-  const tags = Array.isArray(product.tags) ? product.tags : [];
-  const tagsHtml = tags
-    .map(tag => `<span class="tag-badge">${PRODUCT_TAG_LABELS[tag] || tag}</span>`)
-    .join("");
+  const tagsHtml = buildTagsHtml(product.tags);
 
   document.getElementById("product-modal-name").textContent = product.name;
   document.getElementById("product-modal-price").textContent = formatModalPrice(product.price, config);

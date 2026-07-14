@@ -25,14 +25,18 @@ const STORE_CONFIG = {
     logoPath: null
   },
 
+  // Los targets de nav incluyen la página ("index.html#hero",
+  // "catalogo.html"): render-content.js decide en tiempo real si el link
+  // apunta dentro de la página actual (scroll suave) o a otra página
+  // (navegación normal del navegador).
   nav: {
     links: [
-      { label: "Inicio", target: "#hero" },
-      { label: "Nosotros", target: "#about" },
-      { label: "Catálogo", target: "#catalog" },
-      { label: "Galería", target: "#gallery" },
-      { label: "Ubicación", target: "#location" },
-      { label: "Contacto", target: "#contact" }
+      { label: "Inicio", target: "index.html#hero" },
+      { label: "Nosotros", target: "index.html#about" },
+      { label: "Catálogo", target: "catalogo.html" },
+      { label: "Galería", target: "index.html#gallery" },
+      { label: "Ubicación", target: "index.html#location" },
+      { label: "Contacto", target: "index.html#contact" }
     ]
   },
 
@@ -41,7 +45,7 @@ const STORE_CONFIG = {
     headline: "Vestí tu propia historia",
     subheadline: "Prendas y accesorios seleccionados para quienes no siguen reglas.",
     ctaText: "Ver catálogo",
-    ctaTarget: "#catalog"
+    ctaTarget: "catalogo.html"
   },
 
   about: {
@@ -83,7 +87,7 @@ const STORE_CONFIG = {
               "assets/images/catalog/remera-skull-peace-3.jpg"
             ],
             sizes: ["S", "M", "L", "XL"],
-            tags: ["popular"]
+            tags: []
           },
           {
             id: "pack-remeras-basicas",
@@ -143,7 +147,7 @@ const STORE_CONFIG = {
               "assets/images/catalog/conjunto-oversize-amarillo-2.jpg"
             ],
             sizes: ["S", "M", "L"],
-            tags: ["popular"]
+            tags: []
           }
         ]
       },
@@ -208,7 +212,7 @@ const STORE_CONFIG = {
               "assets/images/catalog/reloj-clasico-cuero-3.jpg"
             ],
             sizes: ["Único"],
-            tags: ["popular"]
+            tags: []
           },
           {
             id: "zapatillas-urbanas",

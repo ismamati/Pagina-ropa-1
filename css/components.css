@@ -164,6 +164,18 @@
   border: 1px solid var(--color-border);
 }
 
+.tag-badge[data-tag="nuevo"] {
+  background: #dc2626;
+  color: #fff;
+  border-color: #dc2626;
+}
+
+.tag-badge[data-tag="oferta"] {
+  background: #16a34a;
+  color: #fff;
+  border-color: #16a34a;
+}
+
 /* ---------- Social icons ---------- */
 
 .social-link {
