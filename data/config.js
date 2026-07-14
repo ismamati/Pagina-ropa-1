@@ -4,8 +4,10 @@
 // Para adaptar este sitio a una tienda de ropa nueva, edita SOLO este
 // archivo (y las imágenes en /assets/images/). No hace falta tocar HTML/CSS/JS.
 //
-// No hay carrito ni pagos: cada producto tiene un botón "Consultar por
-// WhatsApp" que abre un chat con el nombre del producto ya escrito.
+// Cada producto tiene "image" (portada, se usa en la tarjeta y en el
+// carrito) e "images" (galería completa que se muestra en el modal de
+// producto, mínimo 1 imagen). Al tocar una tarjeta se abre el modal con
+// esa galería, talles y precio; ahí es donde se agrega al carrito.
 // ============================================================================
 
 const STORE_CONFIG = {
@@ -61,6 +63,11 @@ const STORE_CONFIG = {
             description: "Remera de algodón peinado con estampa frontal, corte regular.",
             price: 14000,
             image: "assets/images/catalog/remera-take-the-trails.jpg",
+            images: [
+              "assets/images/catalog/remera-take-the-trails.jpg",
+              "assets/images/catalog/remera-take-the-trails-2.jpg",
+              "assets/images/catalog/remera-take-the-trails-3.jpg"
+            ],
             sizes: ["S", "M", "L", "XL"],
             tags: ["nuevo"]
           },
@@ -70,6 +77,11 @@ const STORE_CONFIG = {
             description: "Remera oversize unisex, estampa calavera en tinta blanca.",
             price: 15500,
             image: "assets/images/catalog/remera-skull-peace.jpg",
+            images: [
+              "assets/images/catalog/remera-skull-peace.jpg",
+              "assets/images/catalog/remera-skull-peace-2.jpg",
+              "assets/images/catalog/remera-skull-peace-3.jpg"
+            ],
             sizes: ["S", "M", "L", "XL"],
             tags: ["popular"]
           },
@@ -79,6 +91,11 @@ const STORE_CONFIG = {
             description: "Set de 6 remeras lisas en distintos colores, algodón 100%.",
             price: 42000,
             image: "assets/images/catalog/pack-remeras-basicas.jpg",
+            images: [
+              "assets/images/catalog/pack-remeras-basicas.jpg",
+              "assets/images/catalog/pack-remeras-basicas-2.jpg",
+              "assets/images/catalog/pack-remeras-basicas-3.jpg"
+            ],
             sizes: ["S", "M", "L", "XL"],
             tags: ["oferta"]
           }
@@ -94,6 +111,11 @@ const STORE_CONFIG = {
             description: "Jean tiro alto, tela con elastano para mayor comodidad.",
             price: 26000,
             image: "assets/images/catalog/jean-skinny-azul.jpg",
+            images: [
+              "assets/images/catalog/jean-skinny-azul.jpg",
+              "assets/images/catalog/jean-skinny-azul-2.jpg",
+              "assets/images/catalog/jean-skinny-azul-3.jpg"
+            ],
             sizes: ["36", "38", "40", "42", "44"],
             tags: []
           },
@@ -103,6 +125,10 @@ const STORE_CONFIG = {
             description: "Jogger de gabardina liviana, puño elastizado en el tobillo.",
             price: 19500,
             image: "assets/images/catalog/jogger-rosa.jpg",
+            images: [
+              "assets/images/catalog/jogger-rosa.jpg",
+              "assets/images/catalog/jogger-rosa-2.jpg"
+            ],
             sizes: ["S", "M", "L"],
             tags: ["nuevo"]
           },
@@ -112,6 +138,10 @@ const STORE_CONFIG = {
             description: "Hoodie crop + jogger a juego, friza premium.",
             price: 38000,
             image: "assets/images/catalog/conjunto-oversize-amarillo.jpg",
+            images: [
+              "assets/images/catalog/conjunto-oversize-amarillo.jpg",
+              "assets/images/catalog/conjunto-oversize-amarillo-2.jpg"
+            ],
             sizes: ["S", "M", "L"],
             tags: ["popular"]
           }
@@ -127,6 +157,10 @@ const STORE_CONFIG = {
             description: "Vestido midi de corderoy, botones frontales y mangas 3/4.",
             price: 32000,
             image: "assets/images/catalog/vestido-corduroy-borravino.jpg",
+            images: [
+              "assets/images/catalog/vestido-corduroy-borravino.jpg",
+              "assets/images/catalog/vestido-corduroy-borravino-2.jpg"
+            ],
             sizes: ["S", "M", "L"],
             tags: ["nuevo"]
           },
@@ -136,6 +170,9 @@ const STORE_CONFIG = {
             description: "Vestido largo de tela liviana, escote cruzado y lazo en la cintura.",
             price: 29500,
             image: "assets/images/catalog/vestido-fluido-rosa.jpg",
+            images: [
+              "assets/images/catalog/vestido-fluido-rosa.jpg"
+            ],
             sizes: ["S", "M", "L"],
             tags: []
           },
@@ -145,6 +182,11 @@ const STORE_CONFIG = {
             description: "Tapado con detalle de volados y botones perlados, entretiempo.",
             price: 54000,
             image: "assets/images/catalog/tapado-negro-editorial.jpg",
+            images: [
+              "assets/images/catalog/tapado-negro-editorial.jpg",
+              "assets/images/catalog/tapado-negro-editorial-2.jpg",
+              "assets/images/catalog/tapado-negro-editorial-3.jpg"
+            ],
             sizes: ["S", "M", "L"],
             tags: ["último talle"]
           }
@@ -160,6 +202,11 @@ const STORE_CONFIG = {
             description: "Reloj analógico con malla de cuero genuino, resistente al agua.",
             price: 21000,
             image: "assets/images/catalog/reloj-clasico-cuero.jpg",
+            images: [
+              "assets/images/catalog/reloj-clasico-cuero.jpg",
+              "assets/images/catalog/reloj-clasico-cuero-2.jpg",
+              "assets/images/catalog/reloj-clasico-cuero-3.jpg"
+            ],
             sizes: ["Único"],
             tags: ["popular"]
           },
@@ -169,6 +216,11 @@ const STORE_CONFIG = {
             description: "Zapatillas de caña baja, diseño retro basquetbolero.",
             price: 48000,
             image: "assets/images/catalog/zapatillas-urbanas.jpg",
+            images: [
+              "assets/images/catalog/zapatillas-urbanas.jpg",
+              "assets/images/catalog/zapatillas-urbanas-2.jpg",
+              "assets/images/catalog/zapatillas-urbanas-3.jpg"
+            ],
             sizes: ["38", "39", "40", "41", "42", "43"],
             tags: ["nuevo"]
           },
@@ -178,6 +230,10 @@ const STORE_CONFIG = {
             description: "Cinturón, lentes de sol y billetera a juego, cuero genuino.",
             price: 33000,
             image: "assets/images/catalog/kit-accesorios-cuero.jpg",
+            images: [
+              "assets/images/catalog/kit-accesorios-cuero.jpg",
+              "assets/images/catalog/kit-accesorios-cuero-2.jpg"
+            ],
             sizes: ["Único"],
             tags: ["oferta"]
           }

@@ -12,18 +12,18 @@ proyecto para un cliente real, reemplazá todas las imágenes de
 |---|---|---|
 | hero/ | hero-1.jpg | Imagen de fondo del Hero |
 | about/ | local.jpg | Foto del local para "Nuestra propuesta" |
-| catalog/ | remera-take-the-trails.jpg | Producto |
-| catalog/ | remera-skull-peace.jpg | Producto |
-| catalog/ | pack-remeras-basicas.jpg | Producto |
-| catalog/ | jean-skinny-azul.jpg | Producto |
-| catalog/ | jogger-rosa.jpg | Producto |
-| catalog/ | conjunto-oversize-amarillo.jpg | Producto |
-| catalog/ | vestido-corduroy-borravino.jpg | Producto |
-| catalog/ | vestido-fluido-rosa.jpg | Producto |
-| catalog/ | tapado-negro-editorial.jpg | Producto |
-| catalog/ | reloj-clasico-cuero.jpg | Producto |
-| catalog/ | zapatillas-urbanas.jpg | Producto |
-| catalog/ | kit-accesorios-cuero.jpg | Producto |
+| catalog/ | remera-take-the-trails.jpg (+ -2, -3) | Producto (portada + galería del modal) |
+| catalog/ | remera-skull-peace.jpg (+ -2, -3) | Producto (portada + galería del modal) |
+| catalog/ | pack-remeras-basicas.jpg (+ -2, -3) | Producto (portada + galería del modal) |
+| catalog/ | jean-skinny-azul.jpg (+ -2, -3) | Producto (portada + galería del modal) |
+| catalog/ | jogger-rosa.jpg (+ -2) | Producto (portada + galería del modal) |
+| catalog/ | conjunto-oversize-amarillo.jpg (+ -2) | Producto (portada + galería del modal) |
+| catalog/ | vestido-corduroy-borravino.jpg (+ -2) | Producto (portada + galería del modal) |
+| catalog/ | vestido-fluido-rosa.jpg | Producto (una sola foto, sin galería adicional en la demo) |
+| catalog/ | tapado-negro-editorial.jpg (+ -2, -3) | Producto (portada + galería del modal) |
+| catalog/ | reloj-clasico-cuero.jpg (+ -2, -3) | Producto (portada + galería del modal) |
+| catalog/ | zapatillas-urbanas.jpg (+ -2, -3) | Producto (portada + galería del modal) |
+| catalog/ | kit-accesorios-cuero.jpg (+ -2) | Producto (portada + galería del modal) |
 | gallery/ | vidriera.jpg | Galería |
 | gallery/ | perchero-colores.jpg | Galería |
 | gallery/ | clienta-compras.jpg | Galería |

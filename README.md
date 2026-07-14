@@ -24,23 +24,29 @@ css/components.css   → botones, cards, carrito, nav, lightbox (core)
 data/config.js       → TODO el contenido del sitio (EDITAR por cliente)
 js/cart.js           → estado del carrito (localStorage) (core)
 js/render-cart.js    → drawer del carrito + mensaje de WhatsApp (core)
-js/render-catalog.js → catálogo con selector de talle y "Agregar al carrito" (core)
+js/render-catalog.js → tarjetas del catálogo (portada + nombre + precio) (core)
+js/product-modal.js  → ficha de producto en modal (galería, talles, agregar) (core)
 js/*.js              → resto de la lógica de render e interactividad (core)
 assets/images/       → fotos (REEMPLAZAR por cliente)
 assets/icons/        → favicon (REEMPLAZAR por cliente)
 ```
 
-## Cómo funciona el carrito
+## Cómo funciona el catálogo y el carrito
 
-1. Cada producto tiene un selector de talle (si tiene más de uno) y un botón
-   **"Agregar al carrito"**.
-2. El ícono de carrito en el header muestra la cantidad de unidades y abre
+1. Las tarjetas del catálogo muestran solo portada, nombre, precio y tags —
+   no tienen selector de talle ni botón de compra.
+2. Al tocar una tarjeta se abre la **ficha de producto en modal**
+   (`#product-modal`): galería de imágenes (`images[]` de `config.js`, con
+   miniaturas si hay más de una), descripción completa, tags, talles como
+   pills clickeables y el botón **"Agregar al carrito"** (deshabilitado
+   hasta elegir un talle, si el producto tiene más de uno).
+3. El ícono de carrito en el header muestra la cantidad de unidades y abre
    un panel lateral (`#cart-drawer`) con la lista de productos, talle,
    cantidad (+/-) y un botón para quitar cada línea.
-3. El carrito se guarda en `localStorage` (clave `store_cart_v1`), así que
+4. El carrito se guarda en `localStorage` (clave `store_cart_v1`), así que
    sobrevive a un refresh de página — pero es **local al navegador**, no se
    sincroniza entre dispositivos ni hay backend.
-4. Al tocar **"Finalizar pedido por WhatsApp"**, se arma un mensaje con cada
+5. Al tocar **"Finalizar pedido por WhatsApp"**, se arma un mensaje con cada
    producto, talle, cantidad, subtotal y el total, y se abre WhatsApp con
    ese texto pre-cargado al número de `contact.whatsapp`. El pedido real se
    confirma por chat, como en la variante de solo catálogo.
@@ -69,8 +75,11 @@ assets/icons/        → favicon (REEMPLAZAR por cliente)
 El archivo exporta un único objeto `STORE_CONFIG`. El catálogo
 (`catalog.categories`) es un array de categorías, cada una con un array de
 productos (`items`). Cada producto tiene `id`, `name`, `description`,
-`price` (número), `image`, `sizes` (array de talles, ej. `["S","M","L"]`) y
-`tags` opcionales (`nuevo`, `popular`, `oferta`, `último talle`).
+`price` (número), `image` (portada, usada en la tarjeta y en el carrito),
+`images` (array con la galería completa que se muestra en el modal —
+puede tener 1 sola imagen si todavía no hay más fotos del producto),
+`sizes` (array de talles, ej. `["S","M","L"]`) y `tags` opcionales
+(`nuevo`, `popular`, `oferta`, `último talle`).
 
 ## Botón flotante de WhatsApp
 

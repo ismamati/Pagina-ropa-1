@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   renderStaticContent(STORE_CONFIG);
   renderCatalog(STORE_CONFIG);
-  initCatalogActions();
+  initProductModal(STORE_CONFIG);
   initCart(STORE_CONFIG);
   initNav();
   initCatalogFilter();

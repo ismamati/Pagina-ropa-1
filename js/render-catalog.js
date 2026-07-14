@@ -1,10 +1,9 @@
 // render-catalog.js — NO EDITAR. Lógica reusable: genera el catálogo a partir
 // de STORE_CONFIG.catalog. Para agregar/quitar productos, editar data/config.js.
 //
-// A diferencia de la variante "solo catálogo", acá cada producto tiene un
-// selector de talle y un botón "Agregar al carrito" en vez de un link directo
-// a WhatsApp. El pedido completo se manda por WhatsApp al finalizar la compra
-// (ver cart.js / render-cart.js).
+// Las tarjetas son solo portada + nombre + precio + tags: al hacer click se
+// abre la ficha de producto en modal (ver product-modal.js), donde se elige
+// talle y se agrega al carrito.
 
 const PRODUCT_TAG_LABELS = {
   nuevo: "Nuevo",
@@ -14,7 +13,7 @@ const PRODUCT_TAG_LABELS = {
 };
 
 // Índice de productos por id, para poder recuperar el objeto completo
-// cuando se hace click en "Agregar al carrito" (el DOM solo guarda el id).
+// cuando se hace click en una tarjeta (el DOM solo guarda el id).
 const PRODUCT_INDEX = {};
 
 function formatPrice(price, formatting) {
@@ -30,22 +29,10 @@ function buildProductCard(item, config) {
     .map(tag => `<span class="tag-badge">${PRODUCT_TAG_LABELS[tag] || tag}</span>`)
     .join("");
 
-  const sizes = Array.isArray(item.sizes) ? item.sizes : [];
-  const sizeSelectHtml = sizes.length > 1
-    ? `
-      <label class="product-card-size-label">
-        Talle
-        <select class="product-card-size-select" data-product-id="${item.id}">
-          ${sizes.map(size => `<option value="${size}">${size}</option>`).join("")}
-        </select>
-      </label>
-    `
-    : "";
-
   const imageSrc = item.image || "";
 
   return `
-    <article class="product-card">
+    <article class="product-card" data-product-id="${item.id}" tabindex="0" role="button" aria-label="Ver detalle de ${item.name}">
       <img src="${imageSrc}" alt="${item.name}" loading="lazy"
            onerror="this.src='https://placehold.co/400x300?text=${encodeURIComponent(item.name)}'">
       <div class="product-card-body">
@@ -53,12 +40,7 @@ function buildProductCard(item, config) {
           <h4>${item.name}</h4>
           <span class="product-card-price">${formatPrice(item.price, config.formatting)}</span>
         </div>
-        <p class="product-card-description">${item.description || ""}</p>
         ${tagsHtml ? `<div class="product-card-tags">${tagsHtml}</div>` : ""}
-        ${sizeSelectHtml}
-        <button class="btn btn-primary add-to-cart-btn" data-product-id="${item.id}" data-default-size="${sizes[0] || ""}">
-          Agregar al carrito
-        </button>
       </div>
     </article>
   `;
@@ -88,32 +70,4 @@ function renderCatalog(config) {
   }).join("");
 
   catalogContainer.innerHTML = categoriesHtml;
-}
-
-function initCatalogActions() {
-  const catalogContainer = document.getElementById("catalog-container");
-  if (!catalogContainer) return;
-
-  catalogContainer.addEventListener("click", event => {
-    const button = event.target.closest(".add-to-cart-btn");
-    if (!button) return;
-
-    const productId = button.dataset.productId;
-    const product = PRODUCT_INDEX[productId];
-    if (!product) return;
-
-    const card = button.closest(".product-card");
-    const sizeSelect = card.querySelector(".product-card-size-select");
-    const size = sizeSelect ? sizeSelect.value : button.dataset.defaultSize;
-
-    addToCart(product, size);
-
-    const originalLabel = button.textContent;
-    button.textContent = "¡Agregado!";
-    button.disabled = true;
-    setTimeout(() => {
-      button.textContent = originalLabel;
-      button.disabled = false;
-    }, 900);
-  });
 }
