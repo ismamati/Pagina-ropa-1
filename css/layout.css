@@ -134,6 +134,14 @@ section {
   margin-bottom: 1.25rem;
 }
 
+/* ---------- Muestra de destacados (home) ---------- */
+
+.featured-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .catalog-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -267,5 +275,11 @@ section {
 @media (min-width: 1024px) {
   .catalog-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* La muestra de la home siempre tiene 4 destacados: 4 columnas parejas
+     en vez de las 3 del catálogo completo (que dejarían uno suelto). */
+  #featured-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

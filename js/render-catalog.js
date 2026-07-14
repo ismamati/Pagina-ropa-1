@@ -75,3 +75,18 @@ function renderCatalog(config) {
 
   catalogContainer.innerHTML = categoriesHtml;
 }
+
+// Muestra en la home una selección de productos marcados con
+// "featured: true" en config.js (ver #featured-grid en index.html). El
+// botón "Ver más" de esa sección linkea directo a catalogo.html.
+function renderFeaturedProducts(config) {
+  const container = document.getElementById("featured-grid");
+  if (!container) return;
+
+  const categories = (config.catalog && config.catalog.categories) || [];
+  const featuredItems = categories
+    .flatMap(cat => (Array.isArray(cat.items) ? cat.items : []))
+    .filter(item => item.featured);
+
+  container.innerHTML = featuredItems.map(item => buildProductCard(item, config)).join("");
+}

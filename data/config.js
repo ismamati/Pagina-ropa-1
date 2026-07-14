@@ -73,7 +73,8 @@ const STORE_CONFIG = {
               "assets/images/catalog/remera-take-the-trails-3.jpg"
             ],
             sizes: ["S", "M", "L", "XL"],
-            tags: ["nuevo"]
+            tags: ["nuevo"],
+            featured: true
           },
           {
             id: "remera-skull-peace",
@@ -134,7 +135,8 @@ const STORE_CONFIG = {
               "assets/images/catalog/jogger-rosa-2.jpg"
             ],
             sizes: ["S", "M", "L"],
-            tags: ["nuevo"]
+            tags: ["nuevo"],
+            featured: true
           },
           {
             id: "conjunto-oversize-amarillo",
@@ -166,7 +168,8 @@ const STORE_CONFIG = {
               "assets/images/catalog/vestido-corduroy-borravino-2.jpg"
             ],
             sizes: ["S", "M", "L"],
-            tags: ["nuevo"]
+            tags: ["nuevo"],
+            featured: true
           },
           {
             id: "vestido-fluido-rosa",
@@ -226,7 +229,8 @@ const STORE_CONFIG = {
               "assets/images/catalog/zapatillas-urbanas-3.jpg"
             ],
             sizes: ["38", "39", "40", "41", "42", "43"],
-            tags: ["nuevo"]
+            tags: ["nuevo"],
+            featured: true
           },
           {
             id: "kit-accesorios-cuero",

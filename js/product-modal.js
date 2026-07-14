@@ -94,7 +94,6 @@ function closeProductModal() {
 }
 
 function initProductModal(config) {
-  const catalogContainer = document.getElementById("catalog-container");
   const modal = document.getElementById("product-modal");
   const overlay = document.getElementById("product-modal-overlay");
   const closeBtn = document.getElementById("product-modal-close");
@@ -102,7 +101,7 @@ function initProductModal(config) {
   const sizesContainer = document.getElementById("product-modal-sizes");
   const addBtn = document.getElementById("product-modal-add");
 
-  if (!catalogContainer || !modal) return;
+  if (!modal) return;
 
   function openFromCard(card) {
     const productId = card.dataset.productId;
@@ -110,13 +109,16 @@ function initProductModal(config) {
     if (product) openProductModal(product, config);
   }
 
-  catalogContainer.addEventListener("click", event => {
+  // Delegado en document en vez de un contenedor puntual: así funciona
+  // tanto para la grilla completa (#catalog-container) como para la
+  // muestra de destacados en la home (#featured-grid).
+  document.addEventListener("click", event => {
     const card = event.target.closest(".product-card");
     if (!card) return;
     openFromCard(card);
   });
 
-  catalogContainer.addEventListener("keydown", event => {
+  document.addEventListener("keydown", event => {
     if (event.key !== "Enter" && event.key !== " ") return;
     const card = event.target.closest(".product-card");
     if (!card) return;

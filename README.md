@@ -16,7 +16,7 @@ servidor, ni `npm install`, ni build.
 ## Estructura
 
 ```
-index.html           → home: hero, nosotros, galería, ubicación, contacto (no debería requerir cambios)
+index.html           → home: hero, nosotros, muestra de destacados, galería, ubicación, contacto (no debería requerir cambios)
 catalogo.html         → página del catálogo completo, con filtros por categoría (no debería requerir cambios)
 css/theme.css          → colores y tipografía de marca (EDITAR por cliente)
 css/base.css           → reset y tipografía base (core)
@@ -37,6 +37,17 @@ WhatsApp, drawer de carrito y modal de producto — se ven y funcionan como
 un único sitio, solo que el catálogo vive en su propia página en vez de ser
 una sección más del scroll de la home. El carrito es el mismo en las dos
 páginas porque se guarda en `localStorage` (mismo origen).
+
+## Muestra de destacados en la home
+
+La sección `#featured` de `index.html` (entre "Nosotros" y "Galería")
+muestra los productos marcados con `featured: true` en `data/config.js`,
+con un botón **"Ver más"** que linkea a `catalogo.html`. Usa la misma
+función de render que la grilla completa (`buildProductCard`), así que las
+tarjetas se ven y se comportan igual (abren el mismo modal de producto) en
+las dos páginas. Para cambiar qué productos aparecen en la home, editá el
+campo `featured` de cada producto en `config.js` — no hay límite fijo de
+cantidad, pero 3-4 productos es lo que mejor entra en una fila en desktop.
 
 ## Cómo funciona el catálogo y el carrito
 
@@ -85,8 +96,9 @@ productos (`items`). Cada producto tiene `id`, `name`, `description`,
 `price` (número), `image` (portada, usada en la tarjeta y en el carrito),
 `images` (array con la galería completa que se muestra en el modal —
 puede tener 1 sola imagen si todavía no hay más fotos del producto),
-`sizes` (array de talles, ej. `["S","M","L"]`) y `tags` opcionales
-(`nuevo`, `oferta`, `último talle`). Los badges `nuevo` y `oferta` tienen
+`sizes` (array de talles, ej. `["S","M","L"]`), `tags` opcionales
+(`nuevo`, `oferta`, `último talle`) y `featured` opcional (`true` para que
+aparezca en la muestra de la home). Los badges `nuevo` y `oferta` tienen
 color propio (rojo y verde respectivamente, en `components.css`); el resto
 de los tags usa el estilo neutro por defecto.
 

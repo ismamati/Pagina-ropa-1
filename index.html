@@ -62,6 +62,17 @@
       </div>
     </section>
 
+    <section id="featured">
+      <div class="container">
+        <h2 class="section-title">Catálogo</h2>
+        <p class="section-subtitle">Una muestra de lo que tenemos. Mirá el catálogo completo para ver todo.</p>
+        <div class="catalog-grid" id="featured-grid"></div>
+        <div class="featured-cta">
+          <a class="btn btn-outline" href="catalogo.html">Ver más</a>
+        </div>
+      </div>
+    </section>
+
     <section id="gallery">
       <div class="container">
         <h2 class="section-title" data-bind="gallery.title">Galería</h2>
@@ -135,6 +146,26 @@
     </div>
   </aside>
 
+  <div class="product-modal-overlay" id="product-modal-overlay"></div>
+  <div class="product-modal" id="product-modal" role="dialog" aria-modal="true" aria-label="Detalle de producto">
+    <button class="product-modal-close" id="product-modal-close" aria-label="Cerrar">&times;</button>
+    <div class="product-modal-grid">
+      <div class="product-modal-gallery">
+        <img id="product-modal-image" class="product-modal-main-image" src="" alt="">
+        <div class="product-modal-thumbs" id="product-modal-thumbs"></div>
+      </div>
+      <div class="product-modal-info">
+        <h3 id="product-modal-name"></h3>
+        <p class="product-modal-price" id="product-modal-price"></p>
+        <p class="product-modal-description" id="product-modal-description"></p>
+        <div class="product-modal-tags" id="product-modal-tags"></div>
+        <p class="product-modal-sizes-label">Talle</p>
+        <div class="product-modal-sizes" id="product-modal-sizes"></div>
+        <button class="btn btn-primary product-modal-add" id="product-modal-add" disabled>Agregar al carrito</button>
+      </div>
+    </div>
+  </div>
+
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
     <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
     <button class="lightbox-prev" id="lightbox-prev" aria-label="Imagen anterior">&#8249;</button>
@@ -144,7 +175,9 @@
 
   <script src="data/config.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/render-catalog.js"></script>
   <script src="js/render-cart.js"></script>
+  <script src="js/product-modal.js"></script>
   <script src="js/render-content.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/gallery-lightbox.js"></script>
